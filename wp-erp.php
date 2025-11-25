@@ -14,6 +14,7 @@
  * Requires PHP: 7.4
  */
 
+
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
