@@ -1,0 +1,11 @@
+{
+	"core": "WordPress/WordPress#latest",
+	"phpVersion": "7.4",
+	"plugins": [
+		"."
+	],
+	"themes": [
+		"WordPress/twenty-twenty-three"
+	]
+}
+

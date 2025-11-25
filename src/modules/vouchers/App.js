@@ -1,0 +1,235 @@
+/**
+ * Vouchers Module App
+ */
+import { useState, useEffect } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
+import {
+	Card,
+	CardBody,
+	CardHeader,
+	Button,
+	TextControl,
+	SelectControl,
+	TextareaControl,
+	Spinner,
+	Notice,
+	Flex,
+	FlexBlock,
+} from '@wordpress/components';
+import apiFetch from '@wordpress/api-fetch';
+
+const VouchersApp = ({ view = 'list' }) => {
+	const [vouchers, setVouchers] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
+	const [isCreating, setIsCreating] = useState(false);
+	const [formData, setFormData] = useState({
+		voucher_type: 'payment',
+		date: new Date().toISOString().split('T')[0],
+		party_name: '',
+		amount: '',
+		description: '',
+		status: 'draft',
+	});
+
+	useEffect(() => {
+		if (view === 'list') {
+			fetchVouchers();
+		}
+	}, [view]);
+
+	const fetchVouchers = async () => {
+		setLoading(true);
+		setError(null);
+		try {
+			const data = await apiFetch({ path: '/wp-erp/v1/vouchers' });
+			setVouchers(data);
+		} catch (err) {
+			setError(err.message || __('Failed to fetch vouchers', 'wp-erp'));
+		} finally {
+			setLoading(false);
+		}
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		setIsCreating(true);
+		setError(null);
+
+		try {
+			await apiFetch({
+				path: '/wp-erp/v1/vouchers',
+				method: 'POST',
+				data: formData,
+			});
+			setFormData({
+				voucher_type: 'payment',
+				date: new Date().toISOString().split('T')[0],
+				party_name: '',
+				amount: '',
+				description: '',
+				status: 'draft',
+			});
+			if (view === 'create') {
+				window.location.href = 'admin.php?page=wp-erp-vouchers';
+			} else {
+				fetchVouchers();
+			}
+		} catch (err) {
+			setError(err.message || __('Failed to create voucher', 'wp-erp'));
+		} finally {
+			setIsCreating(false);
+		}
+	};
+
+	if (view === 'create') {
+		return (
+			<div className="wp-erp-vouchers" style={{ padding: '16px' }}>
+				{error && (
+					<Notice status="error" isDismissible={false} onRemove={() => setError(null)}>
+						{error}
+					</Notice>
+				)}
+
+				<Card>
+					<CardHeader>
+						<h2 style={{ margin: 0 }}>{__('Create Voucher', 'wp-erp')}</h2>
+					</CardHeader>
+					<CardBody>
+						<form onSubmit={handleSubmit}>
+							<Flex direction="column" gap={4}>
+								<Flex>
+									<FlexBlock>
+										<SelectControl
+											label={__('Voucher Type', 'wp-erp')}
+											value={formData.voucher_type}
+											options={[
+												{ label: __('Payment', 'wp-erp'), value: 'payment' },
+												{ label: __('Receipt', 'wp-erp'), value: 'receipt' },
+												{ label: __('Journal', 'wp-erp'), value: 'journal' },
+											]}
+											onChange={(value) => setFormData({ ...formData, voucher_type: value })}
+											required
+										/>
+									</FlexBlock>
+									<FlexBlock>
+										<TextControl
+											label={__('Date', 'wp-erp')}
+											type="date"
+											value={formData.date}
+											onChange={(value) => setFormData({ ...formData, date: value })}
+											required
+										/>
+									</FlexBlock>
+								</Flex>
+								<FlexBlock>
+									<TextControl
+										label={__('Party Name', 'wp-erp')}
+										value={formData.party_name}
+										onChange={(value) => setFormData({ ...formData, party_name: value })}
+									/>
+								</FlexBlock>
+								<FlexBlock>
+									<TextControl
+										label={__('Amount', 'wp-erp')}
+										type="number"
+										step="0.01"
+										value={formData.amount}
+										onChange={(value) => setFormData({ ...formData, amount: value })}
+										required
+									/>
+								</FlexBlock>
+								<FlexBlock>
+									<TextareaControl
+										label={__('Description', 'wp-erp')}
+										value={formData.description}
+										onChange={(value) => setFormData({ ...formData, description: value })}
+										rows={4}
+									/>
+								</FlexBlock>
+								<Flex justify="flex-start">
+									<Button variant="primary" type="submit" isBusy={isCreating}>
+										{__('Create Voucher', 'wp-erp')}
+									</Button>
+								</Flex>
+							</Flex>
+						</form>
+					</CardBody>
+				</Card>
+			</div>
+		);
+	}
+
+	return (
+		<div className="wp-erp-vouchers" style={{ padding: '16px' }}>
+			{error && (
+				<Notice status="error" isDismissible={false} onRemove={() => setError(null)}>
+					{error}
+				</Notice>
+			)}
+
+			<Card>
+				<CardHeader>
+					<Flex justify="space-between" align="center">
+						<h2 style={{ margin: 0 }}>{__('Vouchers', 'wp-erp')}</h2>
+						<Button variant="primary" href="admin.php?page=wp-erp-vouchers-create">
+							{__('Create Voucher', 'wp-erp')}
+						</Button>
+					</Flex>
+				</CardHeader>
+				<CardBody>
+					{loading ? (
+						<Flex justify="center" style={{ padding: '32px' }}>
+							<Spinner />
+						</Flex>
+					) : vouchers.length === 0 ? (
+						<p style={{ padding: '16px', textAlign: 'center', color: '#757575' }}>
+							{__('No vouchers found.', 'wp-erp')}
+						</p>
+					) : (
+						<div style={{ overflowX: 'auto' }}>
+							<table className="wp-list-table widefat fixed striped">
+								<thead>
+									<tr>
+										<th>{__('Voucher No', 'wp-erp')}</th>
+										<th>{__('Type', 'wp-erp')}</th>
+										<th>{__('Date', 'wp-erp')}</th>
+										<th>{__('Party Name', 'wp-erp')}</th>
+										<th>{__('Amount', 'wp-erp')}</th>
+										<th>{__('Status', 'wp-erp')}</th>
+									</tr>
+								</thead>
+								<tbody>
+									{vouchers.map((voucher) => (
+										<tr key={voucher.id}>
+											<td><strong>{voucher.voucher_no}</strong></td>
+											<td>{voucher.voucher_type}</td>
+											<td>{voucher.date}</td>
+											<td>{voucher.party_name || '-'}</td>
+											<td><strong>{voucher.amount}</strong></td>
+											<td>
+												<span style={{
+													padding: '4px 8px',
+													borderRadius: '2px',
+													backgroundColor: voucher.status === 'approved' ? '#00a32a' : voucher.status === 'draft' ? '#757575' : '#dba617',
+													color: '#fff',
+													fontSize: '12px',
+													textTransform: 'capitalize'
+												}}>
+													{voucher.status}
+												</span>
+											</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
+						</div>
+					)}
+				</CardBody>
+			</Card>
+		</div>
+	);
+};
+
+export default VouchersApp;
+
