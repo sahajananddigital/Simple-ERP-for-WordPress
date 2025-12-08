@@ -53,14 +53,7 @@ class WP_ERP_CRM {
 			30
 		);
 		
-		add_submenu_page(
-			'wp-erp-crm',
-			__( 'Contacts', 'wp-erp' ),
-			__( 'Contacts', 'wp-erp' ),
-			'manage_options',
-			'wp-erp-crm',
-			array( $this, 'render_page' )
-		);
+
 	}
 	
 	/**
@@ -68,10 +61,8 @@ class WP_ERP_CRM {
 	 */
 	public function render_page() {
 		?>
-		<div class="wrap">
-			<h1><?php echo esc_html( $this->name ); ?></h1>
-			<div id="wp-erp-crm-root"></div>
-		</div>
+		<div id="wp-erp-crm-root"></div>
+		<!-- CRM Root -->
 		<?php
 	}
 	

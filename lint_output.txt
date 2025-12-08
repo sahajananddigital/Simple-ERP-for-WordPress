@@ -1,0 +1,278 @@
+
+> wp-erp@1.0.0 lint:js
+> wp-scripts lint-js
+
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/element/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/element/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/i18n/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/i18n/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/components/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/components/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/element/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/element/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/i18n/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/i18n/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/components/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/components/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/element/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/element/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/i18n/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/i18n/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/components/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/components/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/element/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/element/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/i18n/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/i18n/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/components/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/components/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/element/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/element/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/i18n/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/i18n/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/components/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/components/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/element/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/element/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/i18n/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/i18n/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/components/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/components/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/element/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/element/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/i18n/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/i18n/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/components/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/components/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/element/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/element/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/i18n/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/i18n/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/components/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/components/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+Error while parsing /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js
+Line undefined, column undefined: No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead.
+`parseForESLint` from parser `/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@babel/eslint-parser/lib/index.cjs` is invalid and will just be ignored
+
+/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/src/modules/accounting/App.js
+  14:22  warning  Parse errors in imported module '@wordpress/api-fetch': No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead. (undefined:undefined)  import/default
+
+/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/src/modules/crm/App.js
+   18:22  warning  Parse errors in imported module '@wordpress/api-fetch': No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead. (undefined:undefined)  import/default
+  227:8   error    Do not nest ternary expressions                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             no-nested-ternary
+  271:16  error    Do not nest ternary expressions                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             no-nested-ternary
+
+/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/src/modules/expenses/App.js
+   19:22  warning  Parse errors in imported module '@wordpress/api-fetch': No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead. (undefined:undefined)  import/default
+  342:8   error    Do not nest ternary expressions                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             no-nested-ternary
+  393:16  error    Do not nest ternary expressions                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             no-nested-ternary
+
+/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/src/modules/food-pass/App.js
+   19:22  warning  Parse errors in imported module '@wordpress/api-fetch': No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead. (undefined:undefined)  import/default
+   23:10  error    'employees' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              no-unused-vars
+  294:8   error    Do not nest ternary expressions                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             no-nested-ternary
+  349:16  error    Do not nest ternary expressions                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             no-nested-ternary
+
+/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/src/modules/helpdesk/App.js
+  19:22  warning  Parse errors in imported module '@wordpress/api-fetch': No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead. (undefined:undefined)  import/default
+
+/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/src/modules/hr/App.js
+  14:22  warning  Parse errors in imported module '@wordpress/api-fetch': No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead. (undefined:undefined)  import/default
+
+/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/src/modules/invoices/App.js
+  18:22  warning  Parse errors in imported module '@wordpress/api-fetch': No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead. (undefined:undefined)  import/default
+
+/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/src/modules/vouchers/App.js
+  19:22  warning  Parse errors in imported module '@wordpress/api-fetch': No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead. (undefined:undefined)  import/default
+
+/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/tests/modules/accounting/App.test.js
+  6:22  warning  Parse errors in imported module '@wordpress/api-fetch': No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead. (undefined:undefined)  import/default
+
+/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/tests/modules/crm/App.test.js
+  7:22  warning  Parse errors in imported module '@wordpress/api-fetch': No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead. (undefined:undefined)  import/default
+
+/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/tests/modules/expenses/App.test.js
+  6:22  warning  Parse errors in imported module '@wordpress/api-fetch': No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead. (undefined:undefined)  import/default
+
+/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/tests/modules/food-pass/App.test.js
+  6:22  warning  Parse errors in imported module '@wordpress/api-fetch': No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead. (undefined:undefined)  import/default
+
+/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/tests/modules/helpdesk/App.test.js
+  6:22  warning  Parse errors in imported module '@wordpress/api-fetch': No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead. (undefined:undefined)  import/default
+
+/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/tests/modules/hr/App.test.js
+  6:22  warning  Parse errors in imported module '@wordpress/api-fetch': No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead. (undefined:undefined)  import/default
+
+/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/tests/modules/invoices/App.test.js
+  6:22  warning  Parse errors in imported module '@wordpress/api-fetch': No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead. (undefined:undefined)  import/default
+
+/Users/multidots/Documents/Github/Simple-ERP-for-WordPress/tests/modules/vouchers/App.test.js
+  6:22  warning  Parse errors in imported module '@wordpress/api-fetch': No Babel config file detected for /Users/multidots/Documents/Github/Simple-ERP-for-WordPress/node_modules/@wordpress/api-fetch/build-module/index.js. Either disable config file checking with requireConfigFile: false, or configure Babel so that it can find the config files.
+If you have a .babelrc.js file or use package.json#babel, keep in mind that it's not used when parsing dependencies. If you want your config to be applied to your whole app, consider using babel.config.js or babel.config.json instead. (undefined:undefined)  import/default
+
+✖ 23 problems (7 errors, 16 warnings)
+

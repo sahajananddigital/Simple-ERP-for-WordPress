@@ -53,14 +53,7 @@ class WP_ERP_Helpdesk {
 			33
 		);
 		
-		add_submenu_page(
-			'wp-erp-helpdesk',
-			__( 'Tickets', 'wp-erp' ),
-			__( 'Tickets', 'wp-erp' ),
-			'manage_options',
-			'wp-erp-helpdesk',
-			array( $this, 'render_page' )
-		);
+
 	}
 	
 	/**
@@ -68,10 +61,7 @@ class WP_ERP_Helpdesk {
 	 */
 	public function render_page() {
 		?>
-		<div class="wrap">
-			<h1><?php echo esc_html( $this->name ); ?></h1>
-			<div id="wp-erp-helpdesk-root"></div>
-		</div>
+		<div id="wp-erp-helpdesk-root"></div>
 		<?php
 	}
 	

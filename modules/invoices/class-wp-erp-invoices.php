@@ -53,23 +53,7 @@ class WP_ERP_Invoices {
 			35
 		);
 		
-		add_submenu_page(
-			'wp-erp-invoices',
-			__( 'All Invoices', 'wp-erp' ),
-			__( 'All Invoices', 'wp-erp' ),
-			'manage_options',
-			'wp-erp-invoices',
-			array( $this, 'render_page' )
-		);
-		
-		add_submenu_page(
-			'wp-erp-invoices',
-			__( 'Create Invoice', 'wp-erp' ),
-			__( 'Create Invoice', 'wp-erp' ),
-			'manage_options',
-			'wp-erp-invoices-create',
-			array( $this, 'render_create_page' )
-		);
+
 	}
 	
 	/**
@@ -77,24 +61,11 @@ class WP_ERP_Invoices {
 	 */
 	public function render_page() {
 		?>
-		<div class="wrap">
-			<h1><?php echo esc_html( $this->name ); ?></h1>
-			<div id="wp-erp-invoices-root"></div>
-		</div>
+		<div id="wp-erp-invoices-root"></div>
 		<?php
 	}
 	
-	/**
-	 * Render Create Invoice page
-	 */
-	public function render_create_page() {
-		?>
-		<div class="wrap">
-			<h1><?php esc_html_e( 'Create Invoice', 'wp-erp' ); ?></h1>
-			<div id="wp-erp-invoices-create-root"></div>
-		</div>
-		<?php
-	}
+
 	
 	/**
 	 * Check if module is active

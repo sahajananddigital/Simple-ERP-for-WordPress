@@ -15,216 +15,328 @@ import {
 	Notice,
 	Flex,
 	FlexBlock,
+	TabPanel,
 } from '@wordpress/components';
 import apiFetch from '@wordpress/api-fetch';
 
-const VouchersApp = ({ view = 'list' }) => {
-	const [vouchers, setVouchers] = useState([]);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
-	const [isCreating, setIsCreating] = useState(false);
-	const [formData, setFormData] = useState({
+const VouchersApp = ( { view = 'list' } ) => {
+	const [ vouchers, setVouchers ] = useState( [] );
+	const [ loading, setLoading ] = useState( true );
+	const [ error, setError ] = useState( null );
+	const [ isCreating, setIsCreating ] = useState( false );
+	const [ formData, setFormData ] = useState( {
 		voucher_type: 'payment',
-		date: new Date().toISOString().split('T')[0],
+		date: new Date().toISOString().split( 'T' )[ 0 ],
 		party_name: '',
 		amount: '',
 		description: '',
 		status: 'draft',
-	});
+	} );
 
-	useEffect(() => {
-		if (view === 'list') {
+	const [ activeTab, setActiveTab ] = useState(
+		view === 'create' ? 'create' : 'list'
+	);
+
+	useEffect( () => {
+		if ( activeTab === 'list' ) {
 			fetchVouchers();
 		}
-	}, [view]);
+	}, [ activeTab ] );
 
 	const fetchVouchers = async () => {
-		setLoading(true);
-		setError(null);
+		setLoading( true );
+		setError( null );
 		try {
-			const data = await apiFetch({ path: '/wp-erp/v1/vouchers' });
-			setVouchers(data);
-		} catch (err) {
-			setError(err.message || __('Failed to fetch vouchers', 'wp-erp'));
+			const data = await apiFetch( { path: '/wp-erp/v1/vouchers' } );
+			setVouchers( data );
+		} catch ( err ) {
+			setError(
+				err.message || __( 'Failed to fetch vouchers', 'wp-erp' )
+			);
 		} finally {
-			setLoading(false);
+			setLoading( false );
 		}
 	};
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = async ( e ) => {
 		e.preventDefault();
-		setIsCreating(true);
-		setError(null);
+		setIsCreating( true );
+		setError( null );
 
 		try {
-			await apiFetch({
+			await apiFetch( {
 				path: '/wp-erp/v1/vouchers',
 				method: 'POST',
 				data: formData,
-			});
-			setFormData({
+			} );
+			setFormData( {
 				voucher_type: 'payment',
-				date: new Date().toISOString().split('T')[0],
+				date: new Date().toISOString().split( 'T' )[ 0 ],
 				party_name: '',
 				amount: '',
 				description: '',
 				status: 'draft',
-			});
-			if (view === 'create') {
-				window.location.href = 'admin.php?page=wp-erp-vouchers';
+			} );
+			if ( activeTab === 'create' ) {
+				setActiveTab( 'list' );
 			} else {
 				fetchVouchers();
 			}
-		} catch (err) {
-			setError(err.message || __('Failed to create voucher', 'wp-erp'));
+		} catch ( err ) {
+			setError(
+				err.message || __( 'Failed to create voucher', 'wp-erp' )
+			);
 		} finally {
-			setIsCreating(false);
+			setIsCreating( false );
 		}
 	};
 
-	if (view === 'create') {
-		return (
-			<div className="wp-erp-vouchers" style={{ padding: '16px' }}>
-				{error && (
-					<Notice status="error" isDismissible={false} onRemove={() => setError(null)}>
-						{error}
-					</Notice>
-				)}
+	const getStatusColor = ( status ) => {
+		switch ( status ) {
+			case 'approved':
+				return '#00a32a';
+			case 'draft':
+				return '#757575';
+			default:
+				return '#dba617';
+		}
+	};
 
-				<Card>
-					<CardHeader>
-						<h2 style={{ margin: 0 }}>{__('Create Voucher', 'wp-erp')}</h2>
-					</CardHeader>
-					<CardBody>
-						<form onSubmit={handleSubmit}>
-							<Flex direction="column" gap={4}>
-								<Flex>
-									<FlexBlock>
-										<SelectControl
-											label={__('Voucher Type', 'wp-erp')}
-											value={formData.voucher_type}
-											options={[
-												{ label: __('Payment', 'wp-erp'), value: 'payment' },
-												{ label: __('Receipt', 'wp-erp'), value: 'receipt' },
-												{ label: __('Journal', 'wp-erp'), value: 'journal' },
-											]}
-											onChange={(value) => setFormData({ ...formData, voucher_type: value })}
-											required
-										/>
-									</FlexBlock>
-									<FlexBlock>
-										<TextControl
-											label={__('Date', 'wp-erp')}
-											type="date"
-											value={formData.date}
-											onChange={(value) => setFormData({ ...formData, date: value })}
-											required
-										/>
-									</FlexBlock>
-								</Flex>
+	const renderVouchersList = () => {
+		if ( loading ) {
+			return (
+				<Flex justify="center" style={ { padding: '32px' } }>
+					<Spinner />
+				</Flex>
+			);
+		}
+
+		if ( vouchers.length === 0 ) {
+			return (
+				<p
+					style={ {
+						padding: '16px',
+						textAlign: 'center',
+						color: '#757575',
+					} }
+				>
+					{ __( 'No vouchers found.', 'wp-erp' ) }
+				</p>
+			);
+		}
+
+		return (
+			<div style={ { overflowX: 'auto' } }>
+				<table className="wp-list-table widefat fixed striped">
+					<thead>
+						<tr>
+							<th>{ __( 'Voucher No', 'wp-erp' ) }</th>
+							<th>{ __( 'Type', 'wp-erp' ) }</th>
+							<th>{ __( 'Date', 'wp-erp' ) }</th>
+							<th>{ __( 'Party Name', 'wp-erp' ) }</th>
+							<th>{ __( 'Amount', 'wp-erp' ) }</th>
+							<th>{ __( 'Status', 'wp-erp' ) }</th>
+						</tr>
+					</thead>
+					<tbody>
+						{ vouchers.map( ( voucher ) => (
+							<tr key={ voucher.id }>
+								<td>
+									<strong>{ voucher.voucher_no }</strong>
+								</td>
+								<td>{ voucher.voucher_type }</td>
+								<td>{ voucher.date }</td>
+								<td>{ voucher.party_name || '-' }</td>
+								<td>
+									<strong>{ voucher.amount }</strong>
+								</td>
+								<td>
+									<span
+										style={ {
+											padding: '4px 8px',
+											borderRadius: '2px',
+											backgroundColor: getStatusColor(
+												voucher.status
+											),
+											color: '#fff',
+											fontSize: '12px',
+											textTransform: 'capitalize',
+										} }
+									>
+										{ voucher.status }
+									</span>
+								</td>
+							</tr>
+						) ) }
+					</tbody>
+				</table>
+			</div>
+		);
+	};
+
+	const renderCreateVoucher = () => {
+		return (
+			<Card style={ { marginBottom: '24px' } }>
+				<CardHeader>
+					<h2 style={ { margin: 0 } }>
+						{ __( 'Create New Voucher', 'wp-erp' ) }
+					</h2>
+				</CardHeader>
+				<CardBody>
+					<form onSubmit={ handleSubmit }>
+						<Flex direction="column" gap={ 4 }>
+							<Flex>
 								<FlexBlock>
-									<TextControl
-										label={__('Party Name', 'wp-erp')}
-										value={formData.party_name}
-										onChange={(value) => setFormData({ ...formData, party_name: value })}
-									/>
-								</FlexBlock>
-								<FlexBlock>
-									<TextControl
-										label={__('Amount', 'wp-erp')}
-										type="number"
-										step="0.01"
-										value={formData.amount}
-										onChange={(value) => setFormData({ ...formData, amount: value })}
+									<SelectControl
+										label={ __( 'Voucher Type', 'wp-erp' ) }
+										value={ formData.voucher_type }
+										options={ [
+											{
+												label: __(
+													'Payment',
+													'wp-erp'
+												),
+												value: 'payment',
+											},
+											{
+												label: __(
+													'Receipt',
+													'wp-erp'
+												),
+												value: 'receipt',
+											},
+											{
+												label: __(
+													'Journal',
+													'wp-erp'
+												),
+												value: 'journal',
+											},
+										] }
+										onChange={ ( value ) =>
+											setFormData( {
+												...formData,
+												voucher_type: value,
+											} )
+										}
 										required
 									/>
 								</FlexBlock>
 								<FlexBlock>
-									<TextareaControl
-										label={__('Description', 'wp-erp')}
-										value={formData.description}
-										onChange={(value) => setFormData({ ...formData, description: value })}
-										rows={4}
+									<TextControl
+										label={ __( 'Date', 'wp-erp' ) }
+										type="date"
+										value={ formData.date }
+										onChange={ ( value ) =>
+											setFormData( {
+												...formData,
+												date: value,
+											} )
+										}
+										required
 									/>
 								</FlexBlock>
-								<Flex justify="flex-start">
-									<Button variant="primary" type="submit" isBusy={isCreating}>
-										{__('Create Voucher', 'wp-erp')}
-									</Button>
-								</Flex>
 							</Flex>
-						</form>
-					</CardBody>
-				</Card>
-			</div>
+							<FlexBlock>
+								<TextControl
+									label={ __( 'Party Name', 'wp-erp' ) }
+									value={ formData.party_name }
+									onChange={ ( value ) =>
+										setFormData( {
+											...formData,
+											party_name: value,
+										} )
+									}
+								/>
+							</FlexBlock>
+							<FlexBlock>
+								<TextControl
+									label={ __( 'Amount', 'wp-erp' ) }
+									type="number"
+									step="0.01"
+									value={ formData.amount }
+									onChange={ ( value ) =>
+										setFormData( {
+											...formData,
+											amount: value,
+										} )
+									}
+									required
+								/>
+							</FlexBlock>
+							<FlexBlock>
+								<TextareaControl
+									label={ __( 'Description', 'wp-erp' ) }
+									value={ formData.description }
+									onChange={ ( value ) =>
+										setFormData( {
+											...formData,
+											description: value,
+										} )
+									}
+									rows={ 4 }
+								/>
+							</FlexBlock>
+							<Flex justify="flex-start">
+								<Button
+									variant="primary"
+									type="submit"
+									isBusy={ isCreating }
+								>
+									{ __( 'Create Voucher', 'wp-erp' ) }
+								</Button>
+							</Flex>
+						</Flex>
+					</form>
+				</CardBody>
+			</Card>
 		);
-	}
+	};
 
 	return (
-		<div className="wp-erp-vouchers" style={{ padding: '16px' }}>
-			{error && (
-				<Notice status="error" isDismissible={false} onRemove={() => setError(null)}>
-					{error}
+		<div className="wp-erp-vouchers" style={ { padding: '16px' } }>
+			{ error && (
+				<Notice
+					status="error"
+					isDismissible={ false }
+					onRemove={ () => setError( null ) }
+				>
+					{ error }
 				</Notice>
-			)}
+			) }
 
 			<Card>
 				<CardHeader>
-					<Flex justify="space-between" align="center">
-						<h2 style={{ margin: 0 }}>{__('Vouchers', 'wp-erp')}</h2>
-						<Button variant="primary" href="admin.php?page=wp-erp-vouchers-create">
-							{__('Create Voucher', 'wp-erp')}
-						</Button>
-					</Flex>
+					<h2 style={ { margin: 0 } }>
+						{ __( 'Voucher Management', 'wp-erp' ) }
+					</h2>
 				</CardHeader>
 				<CardBody>
-					{loading ? (
-						<Flex justify="center" style={{ padding: '32px' }}>
-							<Spinner />
-						</Flex>
-					) : vouchers.length === 0 ? (
-						<p style={{ padding: '16px', textAlign: 'center', color: '#757575' }}>
-							{__('No vouchers found.', 'wp-erp')}
-						</p>
-					) : (
-						<div style={{ overflowX: 'auto' }}>
-							<table className="wp-list-table widefat fixed striped">
-								<thead>
-									<tr>
-										<th>{__('Voucher No', 'wp-erp')}</th>
-										<th>{__('Type', 'wp-erp')}</th>
-										<th>{__('Date', 'wp-erp')}</th>
-										<th>{__('Party Name', 'wp-erp')}</th>
-										<th>{__('Amount', 'wp-erp')}</th>
-										<th>{__('Status', 'wp-erp')}</th>
-									</tr>
-								</thead>
-								<tbody>
-									{vouchers.map((voucher) => (
-										<tr key={voucher.id}>
-											<td><strong>{voucher.voucher_no}</strong></td>
-											<td>{voucher.voucher_type}</td>
-											<td>{voucher.date}</td>
-											<td>{voucher.party_name || '-'}</td>
-											<td><strong>{voucher.amount}</strong></td>
-											<td>
-												<span style={{
-													padding: '4px 8px',
-													borderRadius: '2px',
-													backgroundColor: voucher.status === 'approved' ? '#00a32a' : voucher.status === 'draft' ? '#757575' : '#dba617',
-													color: '#fff',
-													fontSize: '12px',
-													textTransform: 'capitalize'
-												}}>
-													{voucher.status}
-												</span>
-											</td>
-										</tr>
-									))}
-								</tbody>
-							</table>
-						</div>
-					)}
+					<TabPanel
+						className="wp-erp-vouchers-tabs"
+						activeClass="is-active"
+						initialTabName={ activeTab }
+						onSelect={ ( tabName ) => setActiveTab( tabName ) }
+						tabs={ [
+							{
+								name: 'list',
+								title: __( 'All Vouchers', 'wp-erp' ),
+								className: 'tab-list',
+							},
+							{
+								name: 'create',
+								title: __( 'Create Voucher', 'wp-erp' ),
+								className: 'tab-create',
+							},
+						] }
+					>
+						{ ( tab ) => {
+							if ( tab.name === 'list' ) {
+								return renderVouchersList();
+							}
+							return renderCreateVoucher();
+						} }
+					</TabPanel>
 				</CardBody>
 			</Card>
 		</div>
@@ -232,4 +344,3 @@ const VouchersApp = ({ view = 'list' }) => {
 };
 
 export default VouchersApp;
-

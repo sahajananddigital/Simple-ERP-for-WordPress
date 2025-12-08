@@ -53,23 +53,7 @@ class WP_ERP_Expenses {
 			36
 		);
 		
-		add_submenu_page(
-			'wp-erp-expenses',
-			__( 'All Expenses', 'wp-erp' ),
-			__( 'All Expenses', 'wp-erp' ),
-			'manage_options',
-			'wp-erp-expenses',
-			array( $this, 'render_page' )
-		);
-		
-		add_submenu_page(
-			'wp-erp-expenses',
-			__( 'Add Expense', 'wp-erp' ),
-			__( 'Add Expense', 'wp-erp' ),
-			'manage_options',
-			'wp-erp-expenses-create',
-			array( $this, 'render_create_page' )
-		);
+
 	}
 	
 	/**
@@ -77,24 +61,11 @@ class WP_ERP_Expenses {
 	 */
 	public function render_page() {
 		?>
-		<div class="wrap">
-			<h1><?php echo esc_html( $this->name ); ?></h1>
-			<div id="wp-erp-expenses-root"></div>
-		</div>
+		<div id="wp-erp-expenses-root"></div>
 		<?php
 	}
 	
-	/**
-	 * Render Create Expense page
-	 */
-	public function render_create_page() {
-		?>
-		<div class="wrap">
-			<h1><?php esc_html_e( 'Add Expense', 'wp-erp' ); ?></h1>
-			<div id="wp-erp-expenses-create-root"></div>
-		</div>
-		<?php
-	}
+
 	
 	/**
 	 * Check if module is active

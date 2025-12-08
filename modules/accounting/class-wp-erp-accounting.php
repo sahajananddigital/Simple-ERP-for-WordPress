@@ -53,23 +53,7 @@ class WP_ERP_Accounting {
 			31
 		);
 		
-		add_submenu_page(
-			'wp-erp-accounting',
-			__( 'Chart of Accounts', 'wp-erp' ),
-			__( 'Chart of Accounts', 'wp-erp' ),
-			'manage_options',
-			'wp-erp-accounting',
-			array( $this, 'render_page' )
-		);
-		
-		add_submenu_page(
-			'wp-erp-accounting',
-			__( 'Transactions', 'wp-erp' ),
-			__( 'Transactions', 'wp-erp' ),
-			'manage_options',
-			'wp-erp-accounting-transactions',
-			array( $this, 'render_transactions_page' )
-		);
+
 	}
 	
 	/**
@@ -77,24 +61,12 @@ class WP_ERP_Accounting {
 	 */
 	public function render_page() {
 		?>
-		<div class="wrap">
-			<h1><?php echo esc_html( $this->name ); ?></h1>
-			<div id="wp-erp-accounting-root"></div>
-		</div>
+		<div id="wp-erp-accounting-root"></div>
+		<!-- Accounting Root -->
 		<?php
 	}
 	
-	/**
-	 * Render Transactions page
-	 */
-	public function render_transactions_page() {
-		?>
-		<div class="wrap">
-			<h1><?php esc_html_e( 'Transactions', 'wp-erp' ); ?></h1>
-			<div id="wp-erp-accounting-transactions-root"></div>
-		</div>
-		<?php
-	}
+
 	
 	/**
 	 * Check if module is active

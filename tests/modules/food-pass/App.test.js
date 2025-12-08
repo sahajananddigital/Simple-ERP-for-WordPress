@@ -5,20 +5,20 @@ import { render, screen, waitFor } from '@testing-library/react';
 import FoodPassApp from '../../../src/modules/food-pass/App';
 import apiFetch from '@wordpress/api-fetch';
 
-jest.mock('@wordpress/api-fetch');
+jest.mock( '@wordpress/api-fetch' );
 
-describe('FoodPassApp', () => {
-	beforeEach(() => {
+describe( 'FoodPassApp', () => {
+	beforeEach( () => {
 		apiFetch.mockClear();
-	});
+	} );
 
-	it('renders Food Pass module', () => {
-		apiFetch.mockResolvedValue([]);
-		render(<FoodPassApp />);
-		expect(screen.getByText(/Food Passes/i)).toBeInTheDocument();
-	});
+	it( 'renders Food Pass module', () => {
+		apiFetch.mockResolvedValue( [] );
+		render( <FoodPassApp /> );
+		expect( screen.getByText( /Food Passes/i ) ).toBeInTheDocument();
+	} );
 
-	it('fetches and displays food passes', async () => {
+	it( 'fetches and displays food passes', async () => {
 		const mockFoodPasses = [
 			{
 				id: 1,
@@ -32,19 +32,18 @@ describe('FoodPassApp', () => {
 			},
 		];
 
-		apiFetch.mockResolvedValue(mockFoodPasses);
-		render(<FoodPassApp />);
+		apiFetch.mockResolvedValue( mockFoodPasses );
+		render( <FoodPassApp /> );
 
-		await waitFor(() => {
-			expect(screen.getByText('FP-001')).toBeInTheDocument();
-		});
-	});
+		await waitFor( () => {
+			expect( screen.getByText( 'FP-001' ) ).toBeInTheDocument();
+		} );
+	} );
 
-	it('renders create food pass form', () => {
-		apiFetch.mockResolvedValue([]);
-		render(<FoodPassApp view="create" />);
+	it( 'renders create food pass form', () => {
+		apiFetch.mockResolvedValue( [] );
+		render( <FoodPassApp view="create" /> );
 		// Check for form-specific field
-		expect(screen.getByLabelText(/Issue Date/i)).toBeInTheDocument();
-	});
-});
-
+		expect( screen.getByLabelText( /Issue Date/i ) ).toBeInTheDocument();
+	} );
+} );

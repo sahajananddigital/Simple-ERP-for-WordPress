@@ -4,9 +4,9 @@
 import '@testing-library/jest-dom';
 
 // Mock window.matchMedia for responsive components
-Object.defineProperty(window, 'matchMedia', {
+Object.defineProperty( window, 'matchMedia', {
 	writable: true,
-	value: jest.fn().mockImplementation(query => ({
+	value: jest.fn().mockImplementation( ( query ) => ( {
 		matches: false,
 		media: query,
 		onchange: null,
@@ -15,15 +15,14 @@ Object.defineProperty(window, 'matchMedia', {
 		addEventListener: jest.fn(),
 		removeEventListener: jest.fn(),
 		dispatchEvent: jest.fn(),
-	})),
-});
+	} ) ),
+} );
 
 // Mock WordPress globals
 global.wp = {
 	data: {
-		select: jest.fn(() => ({
+		select: jest.fn( () => ( {
 			getUser: jest.fn(),
-		})),
+		} ) ),
 	},
 };
-

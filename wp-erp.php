@@ -94,6 +94,7 @@ final class WP_ERP {
 		require_once WP_ERP_PLUGIN_DIR . 'modules/invoices/class-wp-erp-invoices.php';
 		require_once WP_ERP_PLUGIN_DIR . 'modules/expenses/class-wp-erp-expenses.php';
 		require_once WP_ERP_PLUGIN_DIR . 'modules/food-pass/class-wp-erp-food-pass.php';
+		require_once WP_ERP_PLUGIN_DIR . 'modules/donations/class-wp-erp-donations.php';
 	}
 	
 	/**
@@ -128,6 +129,7 @@ final class WP_ERP {
 		$this->modules->register_module( 'invoices', new WP_ERP_Invoices() );
 		$this->modules->register_module( 'expenses', new WP_ERP_Expenses() );
 		$this->modules->register_module( 'food-pass', new WP_ERP_Food_Pass() );
+		$this->modules->register_module( 'donations', new WP_ERP_Donations() );
 		
 		// Load addons
 		$this->addons->load_addons();

@@ -23,8 +23,18 @@ class WP_ERP_Admin {
 	 * Add settings menu
 	 */
 	public function add_settings_menu() {
+		add_menu_page(
+			__( 'ERP Settings', 'wp-erp' ),
+			__( 'ERP Settings', 'wp-erp' ),
+			'manage_options',
+			'wp-erp-settings',
+			array( $this, 'render_settings_page' ),
+			'dashicons-admin-generic',
+			90
+		);
+		
 		add_submenu_page(
-			'wp-erp-crm',
+			'wp-erp-settings',
 			__( 'Settings', 'wp-erp' ),
 			__( 'Settings', 'wp-erp' ),
 			'manage_options',
@@ -33,7 +43,7 @@ class WP_ERP_Admin {
 		);
 		
 		add_submenu_page(
-			'wp-erp-crm',
+			'wp-erp-settings',
 			__( 'Addons', 'wp-erp' ),
 			__( 'Addons', 'wp-erp' ),
 			'manage_options',

@@ -12,12 +12,14 @@ import VouchersApp from './modules/vouchers/App';
 import InvoicesApp from './modules/invoices/App';
 import ExpensesApp from './modules/expenses/App';
 import FoodPassApp from './modules/food-pass/App';
+import DonationsApp from './modules/donations/App';
 
 // Initialize modules based on page
 function initERP() {
 	// CRM
 	const crmRoot = document.getElementById( 'wp-erp-crm-root' );
 	if ( crmRoot ) {
+		console.log( 'Mounting CRM App' );
 		const root = createRoot( crmRoot );
 		root.render( <CRMApp /> );
 	}
@@ -25,15 +27,12 @@ function initERP() {
 	// Accounting
 	const accountingRoot = document.getElementById( 'wp-erp-accounting-root' );
 	if ( accountingRoot ) {
+		console.log('Mounting Accounting App');
 		const root = createRoot( accountingRoot );
 		root.render( <AccountingApp /> );
 	}
 
-	const accountingTransactionsRoot = document.getElementById( 'wp-erp-accounting-transactions-root' );
-	if ( accountingTransactionsRoot ) {
-		const root = createRoot( accountingTransactionsRoot );
-		root.render( <AccountingApp view="transactions" /> );
-	}
+
 
 	// HR
 	const hrRoot = document.getElementById( 'wp-erp-hr-root' );
@@ -42,11 +41,7 @@ function initERP() {
 		root.render( <HRApp /> );
 	}
 
-	const hrLeavesRoot = document.getElementById( 'wp-erp-hr-leaves-root' );
-	if ( hrLeavesRoot ) {
-		const root = createRoot( hrLeavesRoot );
-		root.render( <HRApp view="leaves" /> );
-	}
+
 
 	// Helpdesk
 	const helpdeskRoot = document.getElementById( 'wp-erp-helpdesk-root' );
@@ -62,11 +57,7 @@ function initERP() {
 		root.render( <VouchersApp /> );
 	}
 
-	const vouchersCreateRoot = document.getElementById( 'wp-erp-vouchers-create-root' );
-	if ( vouchersCreateRoot ) {
-		const root = createRoot( vouchersCreateRoot );
-		root.render( <VouchersApp view="create" /> );
-	}
+
 
 	// Invoices
 	const invoicesRoot = document.getElementById( 'wp-erp-invoices-root' );
@@ -75,11 +66,7 @@ function initERP() {
 		root.render( <InvoicesApp /> );
 	}
 
-	const invoicesCreateRoot = document.getElementById( 'wp-erp-invoices-create-root' );
-	if ( invoicesCreateRoot ) {
-		const root = createRoot( invoicesCreateRoot );
-		root.render( <InvoicesApp view="create" /> );
-	}
+
 
 	// Expenses
 	const expensesRoot = document.getElementById( 'wp-erp-expenses-root' );
@@ -88,11 +75,7 @@ function initERP() {
 		root.render( <ExpensesApp /> );
 	}
 
-	const expensesCreateRoot = document.getElementById( 'wp-erp-expenses-create-root' );
-	if ( expensesCreateRoot ) {
-		const root = createRoot( expensesCreateRoot );
-		root.render( <ExpensesApp view="create" /> );
-	}
+
 
 	// Food Pass
 	const foodPassRoot = document.getElementById( 'wp-erp-food-pass-root' );
@@ -101,11 +84,14 @@ function initERP() {
 		root.render( <FoodPassApp /> );
 	}
 
-	const foodPassCreateRoot = document.getElementById( 'wp-erp-food-pass-create-root' );
-	if ( foodPassCreateRoot ) {
-		const root = createRoot( foodPassCreateRoot );
-		root.render( <FoodPassApp view="create" /> );
+	// Donations
+	const donationsRoot = document.getElementById( 'wp-erp-donations-root' );
+	if ( donationsRoot ) {
+		const root = createRoot( donationsRoot );
+		root.render( <DonationsApp /> );
 	}
+
+
 }
 
 // Wait for DOM to be ready
@@ -115,4 +101,3 @@ if ( document.readyState === 'loading' ) {
 	// DOM is already ready
 	initERP();
 }
-

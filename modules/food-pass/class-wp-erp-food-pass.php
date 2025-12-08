@@ -53,23 +53,7 @@ class WP_ERP_Food_Pass {
 			37
 		);
 		
-		add_submenu_page(
-			'wp-erp-food-pass',
-			__( 'All Food Passes', 'wp-erp' ),
-			__( 'All Food Passes', 'wp-erp' ),
-			'manage_options',
-			'wp-erp-food-pass',
-			array( $this, 'render_page' )
-		);
-		
-		add_submenu_page(
-			'wp-erp-food-pass',
-			__( 'Create Food Pass', 'wp-erp' ),
-			__( 'Create Food Pass', 'wp-erp' ),
-			'manage_options',
-			'wp-erp-food-pass-create',
-			array( $this, 'render_create_page' )
-		);
+
 	}
 	
 	/**
@@ -77,24 +61,11 @@ class WP_ERP_Food_Pass {
 	 */
 	public function render_page() {
 		?>
-		<div class="wrap">
-			<h1><?php echo esc_html( $this->name ); ?></h1>
-			<div id="wp-erp-food-pass-root"></div>
-		</div>
+		<div id="wp-erp-food-pass-root"></div>
 		<?php
 	}
 	
-	/**
-	 * Render Create Food Pass page
-	 */
-	public function render_create_page() {
-		?>
-		<div class="wrap">
-			<h1><?php esc_html_e( 'Create Food Pass', 'wp-erp' ); ?></h1>
-			<div id="wp-erp-food-pass-create-root"></div>
-		</div>
-		<?php
-	}
+
 	
 	/**
 	 * Check if module is active

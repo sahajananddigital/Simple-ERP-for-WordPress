@@ -53,23 +53,7 @@ class WP_ERP_Vouchers {
 			34
 		);
 		
-		add_submenu_page(
-			'wp-erp-vouchers',
-			__( 'All Vouchers', 'wp-erp' ),
-			__( 'All Vouchers', 'wp-erp' ),
-			'manage_options',
-			'wp-erp-vouchers',
-			array( $this, 'render_page' )
-		);
-		
-		add_submenu_page(
-			'wp-erp-vouchers',
-			__( 'Create Voucher', 'wp-erp' ),
-			__( 'Create Voucher', 'wp-erp' ),
-			'manage_options',
-			'wp-erp-vouchers-create',
-			array( $this, 'render_create_page' )
-		);
+
 	}
 	
 	/**
@@ -77,24 +61,11 @@ class WP_ERP_Vouchers {
 	 */
 	public function render_page() {
 		?>
-		<div class="wrap">
-			<h1><?php echo esc_html( $this->name ); ?></h1>
-			<div id="wp-erp-vouchers-root"></div>
-		</div>
+		<div id="wp-erp-vouchers-root"></div>
 		<?php
 	}
 	
-	/**
-	 * Render Create Voucher page
-	 */
-	public function render_create_page() {
-		?>
-		<div class="wrap">
-			<h1><?php esc_html_e( 'Create Voucher', 'wp-erp' ); ?></h1>
-			<div id="wp-erp-vouchers-create-root"></div>
-		</div>
-		<?php
-	}
+
 	
 	/**
 	 * Check if module is active
