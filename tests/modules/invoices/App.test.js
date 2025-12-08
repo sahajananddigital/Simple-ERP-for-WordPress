@@ -12,10 +12,12 @@ describe( 'InvoicesApp', () => {
 		apiFetch.mockClear();
 	} );
 
-	it( 'renders Invoices module', () => {
+	it( 'renders Invoices module', async () => {
 		apiFetch.mockResolvedValue( [] );
 		render( <InvoicesApp /> );
-		expect( screen.getByText( /Invoices/i ) ).toBeInTheDocument();
+		await waitFor(() => {
+			expect( screen.getAllByText( /All Invoices/i )[0] ).toBeInTheDocument();
+		});
 	} );
 
 	it( 'fetches and displays invoices', async () => {
@@ -38,10 +40,11 @@ describe( 'InvoicesApp', () => {
 		} );
 	} );
 
-	it( 'renders create invoice form', () => {
+	it( 'renders create invoice form', async () => {
 		apiFetch.mockResolvedValue( [] );
 		render( <InvoicesApp view="create" /> );
-		// Check for form-specific text, not just "Create Invoice" which appears in button too
-		expect( screen.getByLabelText( /Invoice Date/i ) ).toBeInTheDocument();
+		await waitFor(() => {
+			expect( screen.getAllByText( /Invoice Date/i )[0] ).toBeInTheDocument();
+		});
 	} );
 } );

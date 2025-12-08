@@ -12,10 +12,13 @@ describe( 'HRApp', () => {
 		apiFetch.mockClear();
 	} );
 
-	it( 'renders HR module', () => {
+	it( 'renders HR module', async () => {
 		apiFetch.mockResolvedValue( [] );
 		render( <HRApp /> );
-		expect( screen.getByText( /Employees/i ) ).toBeInTheDocument();
+		await waitFor( () => {
+			// Check if tab is present
+			expect( screen.getAllByText( /Employees/i )[0] ).toBeInTheDocument();
+		});
 	} );
 
 	it( 'fetches and displays employees', async () => {
@@ -38,8 +41,10 @@ describe( 'HRApp', () => {
 		} );
 	} );
 
-	it( 'displays leaves view', () => {
+	it( 'displays leaves view', async () => {
 		render( <HRApp view="leaves" /> );
-		expect( screen.getByText( /Leave Requests/i ) ).toBeInTheDocument();
+		await waitFor( () => {
+			expect( screen.getAllByText( /Leave Requests/i )[0] ).toBeInTheDocument();
+		});
 	} );
 } );

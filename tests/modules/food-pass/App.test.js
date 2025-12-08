@@ -15,28 +15,26 @@ describe( 'FoodPassApp', () => {
 	it( 'renders Food Pass module', () => {
 		apiFetch.mockResolvedValue( [] );
 		render( <FoodPassApp /> );
-		expect( screen.getByText( /Food Passes/i ) ).toBeInTheDocument();
+		expect( screen.getByText( /Quantity:/i ) ).toBeInTheDocument();
 	} );
 
 	it( 'fetches and displays food passes', async () => {
 		const mockFoodPasses = [
 			{
-				id: 1,
-				pass_no: 'FP-001',
+				id: 123,
 				issue_date: '2024-01-01',
-				valid_from: '2024-01-01',
-				valid_to: '2024-01-31',
-				total_meals: 60,
-				used_meals: 10,
+				total_meals: 1,
+				notes: JSON.stringify({ amount: 90, mealType: 'Lunch' }),
 				status: 'active',
 			},
 		];
 
 		apiFetch.mockResolvedValue( mockFoodPasses );
-		render( <FoodPassApp /> );
+		render( <FoodPassApp view="list" /> ); // Must explicitly set view to list
 
 		await waitFor( () => {
-			expect( screen.getByText( 'FP-001' ) ).toBeInTheDocument();
+			expect( screen.getByText( '123' ) ).toBeInTheDocument();
+			expect( screen.getByText( 'Lunch' ) ).toBeInTheDocument();
 		} );
 	} );
 
@@ -44,6 +42,7 @@ describe( 'FoodPassApp', () => {
 		apiFetch.mockResolvedValue( [] );
 		render( <FoodPassApp view="create" /> );
 		// Check for form-specific field
-		expect( screen.getByLabelText( /Issue Date/i ) ).toBeInTheDocument();
+		expect( screen.getByLabelText( /Quantity:/i ) ).toBeInTheDocument();
+		expect( screen.getByText( /Total Amount to Pay:/i ) ).toBeInTheDocument();
 	} );
 } );

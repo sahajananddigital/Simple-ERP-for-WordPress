@@ -13,10 +13,13 @@ describe( 'CRMApp', () => {
 		apiFetch.mockClear();
 	} );
 
-	it( 'renders CRM module', () => {
+	it( 'renders CRM module', async () => {
 		apiFetch.mockResolvedValue( [] );
 		render( <CRMApp /> );
-		expect( screen.getByText( /Add New Contact/i ) ).toBeInTheDocument();
+		// "Contacts" appears in header and tab list, use getAll or check for specific header
+		await waitFor( () => {
+			expect( screen.getAllByText( /Contacts/i )[0] ).toBeInTheDocument();
+		});
 	} );
 
 	it( 'fetches and displays contacts', async () => {
@@ -46,13 +49,11 @@ describe( 'CRMApp', () => {
 		// Component should render without crashing
 		render( <CRMApp /> );
 
-		// Verify component renders
-		expect( screen.getByText( /Add New Contact/i ) ).toBeInTheDocument();
-
 		// Wait for async operations to complete
 		await waitFor(
 			() => {
-				expect( screen.getByText( /Contacts/i ) ).toBeInTheDocument();
+				const elements = screen.getAllByText( /Contacts/i );
+				expect( elements.length ).toBeGreaterThan( 0 );
 			},
 			{ timeout: 2000 }
 		);

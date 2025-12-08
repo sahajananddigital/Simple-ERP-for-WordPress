@@ -12,10 +12,12 @@ describe( 'ExpensesApp', () => {
 		apiFetch.mockClear();
 	} );
 
-	it( 'renders Expenses module', () => {
+	it( 'renders Expenses module', async () => {
 		apiFetch.mockResolvedValue( [] );
 		render( <ExpensesApp /> );
-		expect( screen.getByText( /Expenses/i ) ).toBeInTheDocument();
+		await waitFor( () => {
+			expect( screen.getAllByText( /All Expenses/i )[0] ).toBeInTheDocument();
+		});
 	} );
 
 	it( 'fetches and displays expenses', async () => {
@@ -39,9 +41,11 @@ describe( 'ExpensesApp', () => {
 		} );
 	} );
 
-	it( 'renders create expense form', () => {
+	it( 'renders create expense form', async () => {
 		render( <ExpensesApp view="create" /> );
-		// Check for form-specific field
-		expect( screen.getByLabelText( /Expense Type/i ) ).toBeInTheDocument();
+		await waitFor(() => {
+			expect( screen.getAllByText( /Add Expense/i )[0] ).toBeInTheDocument();
+			expect( screen.getByLabelText( /Expense Type/i ) ).toBeInTheDocument();
+		});
 	} );
 } );

@@ -34,12 +34,10 @@ const CRMApp = () => {
 	} );
 
 	useEffect( () => {
-		console.log( 'CRMApp mounted' );
 		fetchContacts();
 	}, [] );
 
 	const fetchContacts = async () => {
-		console.log( 'Fetching contacts...' );
 		setLoading( true );
 		setError( null );
 		try {

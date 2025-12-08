@@ -9,8 +9,12 @@ A comprehensive ERP solution for WordPress with extensible addon support. Includ
 - **Core Modules**:
   - **CRM**: Contact management, lead tracking, customer relationships
   - **Accounting**: Chart of accounts, transactions, billing
+  - **Invoices:** Create and manage invoices for your clients.
   - **HR**: Employee management, leave requests
   - **Helpdesk**: Ticket management system
+- **Expenses:** Track and categorize your company expenses.
+- **Food Pass:** Manage daily meal passes for students/employees with lunch notes and reporting.
+- **Donations:** Donation receipting system with donor history, ledger management, and instant printing.ystem
 - **REST API**: Full REST API for all modules
 - **Addon System**: Easy to create and install custom extensions
 - **Testing**: Includes PHPUnit and Jest tests

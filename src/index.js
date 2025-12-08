@@ -27,12 +27,10 @@ function initERP() {
 	// Accounting
 	const accountingRoot = document.getElementById( 'wp-erp-accounting-root' );
 	if ( accountingRoot ) {
-		console.log('Mounting Accounting App');
+		console.log( 'Mounting Accounting App' );
 		const root = createRoot( accountingRoot );
 		root.render( <AccountingApp /> );
 	}
-
-
 
 	// HR
 	const hrRoot = document.getElementById( 'wp-erp-hr-root' );
@@ -40,8 +38,6 @@ function initERP() {
 		const root = createRoot( hrRoot );
 		root.render( <HRApp /> );
 	}
-
-
 
 	// Helpdesk
 	const helpdeskRoot = document.getElementById( 'wp-erp-helpdesk-root' );
@@ -57,8 +53,6 @@ function initERP() {
 		root.render( <VouchersApp /> );
 	}
 
-
-
 	// Invoices
 	const invoicesRoot = document.getElementById( 'wp-erp-invoices-root' );
 	if ( invoicesRoot ) {
@@ -66,16 +60,12 @@ function initERP() {
 		root.render( <InvoicesApp /> );
 	}
 
-
-
 	// Expenses
 	const expensesRoot = document.getElementById( 'wp-erp-expenses-root' );
 	if ( expensesRoot ) {
 		const root = createRoot( expensesRoot );
 		root.render( <ExpensesApp /> );
 	}
-
-
 
 	// Food Pass
 	const foodPassRoot = document.getElementById( 'wp-erp-food-pass-root' );
@@ -90,8 +80,6 @@ function initERP() {
 		const root = createRoot( donationsRoot );
 		root.render( <DonationsApp /> );
 	}
-
-
 }
 
 // Wait for DOM to be ready
