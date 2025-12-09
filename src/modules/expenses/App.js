@@ -7,370 +7,46 @@ import {
 	Card,
 	CardBody,
 	CardHeader,
-	Button,
-	TextControl,
-	SelectControl,
-	TextareaControl,
-	Spinner,
 	Notice,
-	Flex,
-	FlexBlock,
 	TabPanel,
 } from '@wordpress/components';
-import apiFetch from '@wordpress/api-fetch';
+import { fetchExpenses as fetchExpensesApi } from './services/api';
+import ExpensesList from './components/ExpensesList';
+import CreateExpense from './components/CreateExpense';
 
 const ExpensesApp = ( { view = 'list' } ) => {
 	const [ expenses, setExpenses ] = useState( [] );
 	const [ loading, setLoading ] = useState( true );
 	const [ error, setError ] = useState( null );
-	const [ isCreating, setIsCreating ] = useState( false );
-	const [ formData, setFormData ] = useState( {
-		expense_type: 'general',
-		date: new Date().toISOString().split( 'T' )[ 0 ],
-		amount: '',
-		description: '',
-		category: '',
-		payment_method: 'cash',
-		status: 'pending',
-	} );
-
 	const [ activeTab, setActiveTab ] = useState(
 		view === 'create' ? 'create' : 'list'
 	);
 
 	useEffect( () => {
 		if ( activeTab === 'list' ) {
-			fetchExpenses();
+			loadData();
 		}
 	}, [ activeTab ] );
 
-	const fetchExpenses = async () => {
+	const loadData = async () => {
 		setLoading( true );
 		setError( null );
 		try {
-			const data = await apiFetch( { path: '/wp-erp/v1/expenses' } );
+			const data = await fetchExpensesApi();
 			setExpenses( data );
 		} catch ( err ) {
-			setError(
-				err.message || __( 'Failed to fetch expenses', 'wp-erp' )
-			);
+			setError( err.message );
 		} finally {
 			setLoading( false );
 		}
 	};
 
-	const handleSubmit = async ( e ) => {
-		e.preventDefault();
-		setIsCreating( true );
-		setError( null );
-
-		try {
-			await apiFetch( {
-				path: '/wp-erp/v1/expenses',
-				method: 'POST',
-				data: formData,
-			} );
-			setFormData( {
-				expense_type: 'general',
-				date: new Date().toISOString().split( 'T' )[ 0 ],
-				amount: '',
-				description: '',
-				category: '',
-				payment_method: 'cash',
-				status: 'pending',
-			} );
-			if ( activeTab === 'create' ) {
-				setActiveTab( 'list' );
-			} else {
-				fetchExpenses();
-			}
-		} catch ( err ) {
-			setError(
-				err.message || __( 'Failed to create expense', 'wp-erp' )
-			);
-		} finally {
-			setIsCreating( false );
+	const handleExpenseCreated = () => {
+		if ( activeTab !== 'list' ) {
+			setActiveTab( 'list' );
+		} else {
+			loadData();
 		}
-	};
-
-	const getStatusColor = ( status ) => {
-		switch ( status ) {
-			case 'approved':
-				return '#00a32a';
-			case 'rejected':
-				return '#d63638';
-			default:
-				return '#dba617';
-		}
-	};
-
-	const renderExpensesList = () => {
-		if ( loading ) {
-			return (
-				<Flex justify="center" style={ { padding: '32px' } }>
-					<Spinner />
-				</Flex>
-			);
-		}
-
-		if ( expenses.length === 0 ) {
-			return (
-				<p
-					style={ {
-						padding: '16px',
-						textAlign: 'center',
-						color: '#757575',
-					} }
-				>
-					{ __( 'No expenses found.', 'wp-erp' ) }
-				</p>
-			);
-		}
-
-		return (
-			<div style={ { overflowX: 'auto' } }>
-				<table className="wp-list-table widefat fixed striped">
-					<thead>
-						<tr>
-							<th>{ __( 'Expense No', 'wp-erp' ) }</th>
-							<th>{ __( 'Type', 'wp-erp' ) }</th>
-							<th>{ __( 'Date', 'wp-erp' ) }</th>
-							<th>{ __( 'Amount', 'wp-erp' ) }</th>
-							<th>{ __( 'Category', 'wp-erp' ) }</th>
-							<th>{ __( 'Status', 'wp-erp' ) }</th>
-						</tr>
-					</thead>
-					<tbody>
-						{ expenses.map( ( expense ) => (
-							<tr key={ expense.id }>
-								<td>
-									<strong>{ expense.expense_no }</strong>
-								</td>
-								<td>{ expense.expense_type }</td>
-								<td>{ expense.date }</td>
-								<td>
-									<strong>{ expense.amount }</strong>
-								</td>
-								<td>{ expense.category || '-' }</td>
-								<td>
-									<span
-										style={ {
-											padding: '4px 8px',
-											borderRadius: '2px',
-											backgroundColor: getStatusColor(
-												expense.status
-											),
-											color: '#fff',
-											fontSize: '12px',
-											textTransform: 'capitalize',
-										} }
-									>
-										{ expense.status }
-									</span>
-								</td>
-							</tr>
-						) ) }
-					</tbody>
-				</table>
-			</div>
-		);
-	};
-
-	const renderCreateExpense = () => {
-		return (
-			<Card style={ { marginBottom: '24px' } }>
-				<CardHeader>
-					<h2 style={ { margin: 0 } }>
-						{ __( 'Add Expense', 'wp-erp' ) }
-					</h2>
-				</CardHeader>
-				<CardBody>
-					<form onSubmit={ handleSubmit }>
-						<Flex direction="column" gap={ 4 }>
-							<Flex>
-								<FlexBlock>
-									<SelectControl
-										label={ __( 'Expense Type', 'wp-erp' ) }
-										value={ formData.expense_type }
-										options={ [
-											{
-												label: __(
-													'General',
-													'wp-erp'
-												),
-												value: 'general',
-											},
-											{
-												label: __( 'Travel', 'wp-erp' ),
-												value: 'travel',
-											},
-											{
-												label: __( 'Meals', 'wp-erp' ),
-												value: 'meals',
-											},
-											{
-												label: __(
-													'Office Supplies',
-													'wp-erp'
-												),
-												value: 'office_supplies',
-											},
-										] }
-										onChange={ ( value ) =>
-											setFormData( {
-												...formData,
-												expense_type: value,
-											} )
-										}
-									/>
-								</FlexBlock>
-								<FlexBlock>
-									<TextControl
-										label={ __( 'Date', 'wp-erp' ) }
-										type="date"
-										value={ formData.date }
-										onChange={ ( value ) =>
-											setFormData( {
-												...formData,
-												date: value,
-											} )
-										}
-										required
-									/>
-								</FlexBlock>
-							</Flex>
-							<Flex>
-								<FlexBlock>
-									<TextControl
-										label={ __( 'Amount', 'wp-erp' ) }
-										type="number"
-										step="0.01"
-										value={ formData.amount }
-										onChange={ ( value ) =>
-											setFormData( {
-												...formData,
-												amount: value,
-											} )
-										}
-										required
-									/>
-								</FlexBlock>
-								<FlexBlock>
-									<TextControl
-										label={ __( 'Category', 'wp-erp' ) }
-										value={ formData.category }
-										onChange={ ( value ) =>
-											setFormData( {
-												...formData,
-												category: value,
-											} )
-										}
-									/>
-								</FlexBlock>
-							</Flex>
-							<Flex>
-								<FlexBlock>
-									<SelectControl
-										label={ __(
-											'Payment Method',
-											'wp-erp'
-										) }
-										value={ formData.payment_method }
-										options={ [
-											{
-												label: __( 'Cash', 'wp-erp' ),
-												value: 'cash',
-											},
-											{
-												label: __(
-													'Bank Transfer',
-													'wp-erp'
-												),
-												value: 'bank_transfer',
-											},
-											{
-												label: __(
-													'Credit Card',
-													'wp-erp'
-												),
-												value: 'credit_card',
-											},
-											{
-												label: __( 'Cheque', 'wp-erp' ),
-												value: 'cheque',
-											},
-										] }
-										onChange={ ( value ) =>
-											setFormData( {
-												...formData,
-												payment_method: value,
-											} )
-										}
-									/>
-								</FlexBlock>
-								<FlexBlock>
-									<SelectControl
-										label={ __( 'Status', 'wp-erp' ) }
-										value={ formData.status }
-										options={ [
-											{
-												label: __(
-													'Pending',
-													'wp-erp'
-												),
-												value: 'pending',
-											},
-											{
-												label: __(
-													'Approved',
-													'wp-erp'
-												),
-												value: 'approved',
-											},
-											{
-												label: __(
-													'Rejected',
-													'wp-erp'
-												),
-												value: 'rejected',
-											},
-										] }
-										onChange={ ( value ) =>
-											setFormData( {
-												...formData,
-												status: value,
-											} )
-										}
-									/>
-								</FlexBlock>
-							</Flex>
-							<FlexBlock>
-								<TextareaControl
-									label={ __( 'Description', 'wp-erp' ) }
-									value={ formData.description }
-									onChange={ ( value ) =>
-										setFormData( {
-											...formData,
-											description: value,
-										} )
-									}
-									rows={ 4 }
-								/>
-							</FlexBlock>
-							<Flex justify="flex-start">
-								<Button
-									variant="primary"
-									type="submit"
-									isBusy={ isCreating }
-								>
-									{ __( 'Add Expense', 'wp-erp' ) }
-								</Button>
-							</Flex>
-						</Flex>
-					</form>
-				</CardBody>
-			</Card>
-		);
 	};
 
 	return (
@@ -412,9 +88,9 @@ const ExpensesApp = ( { view = 'list' } ) => {
 					>
 						{ ( tab ) => {
 							if ( tab.name === 'list' ) {
-								return renderExpensesList();
+								return <ExpensesList expenses={ expenses } loading={ loading } />;
 							}
-							return renderCreateExpense();
+							return <CreateExpense onExpenseCreated={ handleExpenseCreated } />;
 						} }
 					</TabPanel>
 				</CardBody>
