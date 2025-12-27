@@ -43,14 +43,13 @@ class WP_ERP_Expenses {
 	 * Add admin menu
 	 */
 	public function add_admin_menu() {
-		add_menu_page(
+		add_submenu_page(
+			'wp-erp-accounting',
 			__( 'Expenses', 'wp-erp' ),
 			__( 'Expenses', 'wp-erp' ),
-			'manage_options',
+			'erp_manage_expenses',
 			'wp-erp-expenses',
-			array( $this, 'render_page' ),
-			'dashicons-money-alt',
-			36
+			array( $this, 'render_page' )
 		);
 		
 

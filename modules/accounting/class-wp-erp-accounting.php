@@ -46,7 +46,7 @@ class WP_ERP_Accounting {
 		add_menu_page(
 			__( 'Accounting', 'wp-erp' ),
 			__( 'Accounting', 'wp-erp' ),
-			'manage_options',
+			'erp_manage_accounting',
 			'wp-erp-accounting',
 			array( $this, 'render_page' ),
 			'dashicons-chart-line',

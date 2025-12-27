@@ -52,6 +52,13 @@ final class WP_ERP {
 	 * @var WP_ERP_Module_Manager
 	 */
 	public $modules;
+
+	/**
+	 * User Management instance
+	 *
+	 * @var WP_ERP_User_Management
+	 */
+	public $user_management;
 	
 	/**
 	 * Get plugin instance
@@ -81,6 +88,7 @@ final class WP_ERP {
 		require_once WP_ERP_PLUGIN_DIR . 'includes/class-wp-erp-database.php';
 		require_once WP_ERP_PLUGIN_DIR . 'includes/class-wp-erp-module-manager.php';
 		require_once WP_ERP_PLUGIN_DIR . 'includes/class-wp-erp-addon-manager.php';
+		require_once WP_ERP_PLUGIN_DIR . 'includes/class-wp-erp-user-management.php';
 		require_once WP_ERP_PLUGIN_DIR . 'includes/class-wp-erp-api.php';
 		require_once WP_ERP_PLUGIN_DIR . 'includes/class-wp-erp-admin.php';
 		require_once WP_ERP_PLUGIN_DIR . 'includes/functions.php';
@@ -119,6 +127,7 @@ final class WP_ERP {
 		// Initialize managers
 		$this->modules = new WP_ERP_Module_Manager();
 		$this->addons = new WP_ERP_Addon_Manager();
+		$this->user_management = new WP_ERP_User_Management();
 		
 		// Load core modules
 		$this->modules->register_module( 'crm', new WP_ERP_CRM() );

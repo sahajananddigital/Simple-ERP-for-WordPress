@@ -27,6 +27,14 @@ const ContactForm = ( { onContactCreated } ) => {
 		company: '',
 		status: 'lead',
 		type: 'contact',
+		address_line_1: '',
+		address_line_2: '',
+		city: '',
+		state: '',
+		postal_code: '',
+		country: '',
+		birthday: '',
+		anniversary: '',
 	} );
 
 	const handleSubmit = async ( e ) => {
@@ -46,6 +54,14 @@ const ContactForm = ( { onContactCreated } ) => {
 				company: '',
 				status: 'lead',
 				type: 'contact',
+				address_line_1: '',
+				address_line_2: '',
+				city: '',
+				state: '',
+				postal_code: '',
+				country: '',
+				birthday: '',
+				anniversary: '',
 			} );
 
 			if ( onContactCreated ) {
@@ -183,6 +199,116 @@ const ContactForm = ( { onContactCreated } ) => {
 											setFormData( {
 												...formData,
 												status: value,
+											} )
+										}
+									/>
+								</FlexBlock>
+							</Flex>
+							<hr />
+							<h3>{ __( 'Contact Details', 'wp-erp' ) }</h3>
+							<Flex>
+								<FlexBlock>
+									<TextControl
+										label={ __( 'Address Line 1', 'wp-erp' ) }
+										value={ formData.address_line_1 }
+										onChange={ ( value ) =>
+											setFormData( {
+												...formData,
+												address_line_1: value,
+											} )
+										}
+									/>
+								</FlexBlock>
+								<FlexBlock>
+									<TextControl
+										label={ __( 'Address Line 2', 'wp-erp' ) }
+										value={ formData.address_line_2 }
+										onChange={ ( value ) =>
+											setFormData( {
+												...formData,
+												address_line_2: value,
+											} )
+										}
+									/>
+								</FlexBlock>
+							</Flex>
+							<Flex>
+								<FlexBlock>
+									<TextControl
+										label={ __( 'City', 'wp-erp' ) }
+										value={ formData.city }
+										onChange={ ( value ) =>
+											setFormData( {
+												...formData,
+												city: value,
+											} )
+										}
+									/>
+								</FlexBlock>
+								<FlexBlock>
+									<TextControl
+										label={ __( 'State/Province', 'wp-erp' ) }
+										value={ formData.state }
+										onChange={ ( value ) =>
+											setFormData( {
+												...formData,
+												state: value,
+											} )
+										}
+									/>
+								</FlexBlock>
+								<FlexBlock>
+									<TextControl
+										label={ __( 'Postal Code', 'wp-erp' ) }
+										value={ formData.postal_code }
+										onChange={ ( value ) =>
+											setFormData( {
+												...formData,
+												postal_code: value,
+											} )
+										}
+									/>
+								</FlexBlock>
+							</Flex>
+							<Flex>
+								<FlexBlock>
+									<TextControl
+										label={ __( 'Country', 'wp-erp' ) }
+										value={ formData.country }
+										onChange={ ( value ) =>
+											setFormData( {
+												...formData,
+												country: value,
+											} )
+										}
+									/>
+								</FlexBlock>
+							</Flex>
+							<hr />
+							<h3>{ __( 'Important Dates', 'wp-erp' ) }</h3>
+							<Flex>
+								<FlexBlock>
+									<TextControl
+										label={ __( 'Birthday', 'wp-erp' ) }
+										type="date"
+										value={ formData.birthday }
+										onChange={ ( value ) =>
+											setFormData( {
+												...formData,
+												birthday: value,
+											} )
+										}
+									/>
+								</FlexBlock>
+								<FlexBlock>
+									<TextControl
+										label={ __( 'Anniversary', 'wp-erp' ) }
+										type="date"
+										value={ formData.anniversary }
+										onChange={ ( value ) =>
+											setFormData( {
+												...formData,
+												anniversary: value,
 											} )
 										}
 									/>

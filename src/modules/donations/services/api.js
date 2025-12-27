@@ -59,3 +59,16 @@ export const fetchDonorByPhone = async ( phone ) => {
 		return null;
 	}
 };
+
+export const updateDonation = async ( payload ) => {
+	try {
+		const id = payload.id;
+		return await apiFetch( {
+			path: `/wp-erp/v1/donations/${ id }`,
+			method: 'POST',
+			data: payload,
+		} );
+	} catch ( err ) {
+		throw new Error( 'Failed to update donation' );
+	}
+};

@@ -46,7 +46,7 @@ class WP_ERP_HR {
 		add_menu_page(
 			__( 'HR', 'wp-erp' ),
 			__( 'HR', 'wp-erp' ),
-			'manage_options',
+			'erp_manage_hr',
 			'wp-erp-hr',
 			array( $this, 'render_page' ),
 			'dashicons-id',

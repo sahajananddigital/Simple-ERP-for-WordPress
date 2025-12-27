@@ -7,6 +7,7 @@ import { Card, CardBody, CardHeader, Notice, TabPanel } from '@wordpress/compone
 import { fetchContacts as fetchContactsApi } from './services/api';
 import ContactsList from './components/ContactsList';
 import ContactForm from './components/ContactForm';
+import Reports from './components/Reports';
 
 const CRMApp = () => {
 	const [ contacts, setContacts ] = useState( [] );
@@ -21,7 +22,7 @@ const CRMApp = () => {
 		setLoading( true );
 		setError( null );
 		try {
-			const data = await fetchContactsApi();
+			const data = await fetchContactsApi(); // Fetch all initially for Contacts List
 			setContacts( data );
 		} catch ( err ) {
 			setError( err.message );
@@ -63,24 +64,34 @@ const CRMApp = () => {
 								title: __( 'Contacts', 'wp-erp' ),
 								className: 'tab-contacts',
 							},
+							{
+								name: 'reports',
+								title: __( 'Reports', 'wp-erp' ),
+								className: 'tab-reports',
+							},
 						] }
 					>
 						{ ( tab ) => (
 							<>
-								<ContactForm onContactCreated={ handleContactCreated } />
-								<Card>
-									<CardHeader>
-										<h2 style={ { margin: 0 } }>
-											{ __( 'Contacts', 'wp-erp' ) }
-										</h2>
-									</CardHeader>
-									<CardBody>
-										<ContactsList
-											contacts={ contacts }
-											loading={ loading }
-										/>
-									</CardBody>
-								</Card>
+								{ tab.name === 'contacts' && (
+									<>
+										<ContactForm onContactCreated={ handleContactCreated } />
+										<Card>
+											<CardHeader>
+												<h2 style={ { margin: 0 } }>
+													{ __( 'Contacts', 'wp-erp' ) }
+												</h2>
+											</CardHeader>
+											<CardBody>
+												<ContactsList
+													contacts={ contacts }
+													loading={ loading }
+												/>
+											</CardBody>
+										</Card>
+									</>
+								) }
+								{ tab.name === 'reports' && <Reports /> }
 							</>
 						) }
 					</TabPanel>

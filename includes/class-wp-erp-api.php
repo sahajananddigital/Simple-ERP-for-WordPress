@@ -187,8 +187,62 @@ class WP_ERP_API {
 		if ( ! $this->table_exists( $table ) ) {
 			return rest_ensure_response( array() );
 		}
+
+		$params = $request->get_params();
+		$where = array( '1=1' );
+		$args = array();
+
+		// Status
+		if ( ! empty( $params['status'] ) && $params['status'] !== 'all' ) {
+			$where[] = 'status = %s';
+			$args[] = sanitize_text_field( $params['status'] );
+		}
+
+		// Type
+		if ( ! empty( $params['type'] ) && $params['type'] !== 'all' ) {
+			$where[] = 'type = %s';
+			$args[] = sanitize_text_field( $params['type'] );
+		}
+
+		// Search (Name/Email/Phone)
+		if ( ! empty( $params['search'] ) ) {
+			$search = '%' . $wpdb->esc_like( sanitize_text_field( $params['search'] ) ) . '%';
+			$where[] = '(first_name LIKE %s OR last_name LIKE %s OR email LIKE %s OR phone LIKE %s)';
+			$args[] = $search;
+			$args[] = $search;
+			$args[] = $search;
+			$args[] = $search;
+		}
+
+		// Date Range
+		if ( ! empty( $params['start_date'] ) ) {
+			$where[] = 'created_at >= %s';
+			$args[] = sanitize_text_field( $params['start_date'] );
+		}
+		if ( ! empty( $params['end_date'] ) ) {
+			$where[] = 'created_at <= %s';
+			$args[] = sanitize_text_field( $params['end_date'] );
+		}
+
+		// Birthday / Anniversary Month
+		if ( ! empty( $params['birthday_month'] ) ) {
+			$where[] = 'MONTH(birthday) = %d';
+			$args[] = intval( $params['birthday_month'] );
+		}
+		if ( ! empty( $params['anniversary_month'] ) ) {
+			$where[] = 'MONTH(anniversary) = %d';
+			$args[] = intval( $params['anniversary_month'] );
+		}
+
+		$where_sql = implode( ' AND ', $where );
 		
-		$contacts = $wpdb->get_results( "SELECT * FROM $table ORDER BY created_at DESC" );
+		if ( ! empty( $args ) ) {
+			$sql = $wpdb->prepare( "SELECT * FROM $table WHERE $where_sql ORDER BY created_at DESC", $args );
+		} else {
+			$sql = "SELECT * FROM $table WHERE $where_sql ORDER BY created_at DESC";
+		}
+		
+		$contacts = $wpdb->get_results( $sql );
 		return rest_ensure_response( $contacts );
 	}
 	

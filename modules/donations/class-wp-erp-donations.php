@@ -75,7 +75,7 @@ class WP_ERP_Donations {
 		add_menu_page(
 			__( 'Donations', 'wp-erp' ),
 			__( 'Donations', 'wp-erp' ),
-			'manage_options',
+			'erp_manage_donations',
 			'wp-erp-donations',
 			array( $this, 'render_page' ),
 			'dashicons-heart', // Heart icon for donations
@@ -110,6 +110,13 @@ class WP_ERP_Donations {
 		register_rest_route( $namespace, '/' . $base, array(
 			'methods'             => 'POST',
 			'callback'            => array( $this, 'create_donation' ),
+			'permission_callback' => '__return_true',
+		) );
+		
+		// Update donation
+		register_rest_route( $namespace, '/' . $base . '/(?P<id>\d+)', array(
+			'methods'             => 'POST',
+			'callback'            => array( $this, 'update_donation' ),
 			'permission_callback' => '__return_true',
 		) );
 		
@@ -174,12 +181,103 @@ class WP_ERP_Donations {
 
 		$format = array( '%s', '%s', '%s', '%f', '%s', '%s', '%s' );
 		
+
+		// Check/Create CRM Contact
+		if ( ! empty( $params['phone'] ) ) {
+			$crm_table = $wpdb->prefix . 'erp_crm_contacts';
+			
+			// Check if table exists to avoid errors if CRM not active
+			if ( $wpdb->get_var( "SHOW TABLES LIKE '$crm_table'" ) == $crm_table ) {
+				$name_parts = explode( ' ', $params['donor_name'], 2 );
+				$first_name = trim( $name_parts[0] );
+				$last_name = isset( $name_parts[1] ) ? trim( $name_parts[1] ) : '';
+
+				// Check for contact with SAME phone AND SAME name
+				// If phone exists but name is different, we create a new one (Father/Child case)
+				$contact = $wpdb->get_row( $wpdb->prepare( 
+					"SELECT id FROM $crm_table WHERE phone = %s AND first_name = %s AND last_name = %s", 
+					$params['phone'], 
+					$first_name,
+					$last_name
+				) );
+				
+				if ( ! $contact ) {
+					// Create new contact
+					$wpdb->insert( $crm_table, array(
+						'first_name' => $first_name,
+						'last_name'  => $last_name,
+						'phone'      => $params['phone'],
+						'type'       => 'contact',
+						'status'     => 'lead', // Default to lead
+						'created_at' => current_time( 'mysql' )
+					) );
+				}
+			}
+		}
+
 		$wpdb->insert( $table_name, $data, $format );
 		
 		$new_id = $wpdb->insert_id;
 		$donation = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $table_name WHERE id = %d", $new_id ) );
 
+		// Attach donor_id to response if we found/created one
+		// We need to re-fetch the CRM contact ID effectively if we didn't just create it?
+		// Actually, let's just re-query or use the one we found.
+		// Optimized: We already queried it earlier.
+		
+		// Re-lookup or use captured ID. For simplicity/reliability in this block:
+		if ( ! empty( $params['phone'] ) ) {
+			$crm_table = $wpdb->prefix . 'erp_crm_contacts';
+			if ( $wpdb->get_var( "SHOW TABLES LIKE '$crm_table'" ) == $crm_table ) {
+				// We can reuse the same query logic to be 100% sure we get the ID associated with this phone/name combo
+				$name_parts = explode( ' ', $params['donor_name'], 2 );
+				$first_name = trim( $name_parts[0] );
+				$last_name = isset( $name_parts[1] ) ? trim( $name_parts[1] ) : '';
+				
+				$contact = $wpdb->get_row( $wpdb->prepare( 
+					"SELECT id FROM $crm_table WHERE phone = %s AND first_name = %s AND last_name = %s", 
+					$params['phone'], 
+					$first_name,
+					$last_name
+				) );
+				
+				if ( $contact ) {
+					$donation->donor_id = $contact->id;
+				}
+			}
+		}
+
 		return rest_ensure_response( $donation );
+	}
+
+	/**
+	 * Update donation
+	 */
+	public function update_donation( $request ) {
+		global $wpdb;
+		$table_name = $wpdb->prefix . 'erp_donations';
+		
+		$id = intval( $request['id'] );
+		$params = $request->get_json_params();
+		
+		// Basic verification
+		if ( ! $id ) {
+			return new WP_Error( 'no_id', 'ID is required', array( 'status' => 400 ) );
+		}
+
+		$data = array();
+		if ( isset( $params['donor_name'] ) ) $data['donor_name'] = sanitize_text_field( $params['donor_name'] );
+		if ( isset( $params['phone'] ) ) $data['phone'] = sanitize_text_field( $params['phone'] );
+		if ( isset( $params['ledger'] ) ) $data['ledger'] = sanitize_text_field( $params['ledger'] );
+		if ( isset( $params['amount'] ) ) $data['amount'] = floatval( $params['amount'] );
+		if ( isset( $params['notes'] ) ) $data['notes'] = sanitize_textarea_field( $params['notes'] );
+		if ( isset( $params['issue_date'] ) ) $data['issue_date'] = sanitize_text_field( $params['issue_date'] );
+
+		if ( ! empty( $data ) ) {
+			$wpdb->update( $table_name, $data, array( 'id' => $id ) );
+		}
+		
+		return rest_ensure_response( array( 'success' => true ) );
 	}
 
 	/**
@@ -194,18 +292,23 @@ class WP_ERP_Donations {
 		if ( empty( $phone ) ) {
 			return new WP_Error( 'no_phone', 'Phone number required', array( 'status' => 400 ) );
 		}
-		
-		// Find the most recent record for this phone number
-		$result = $wpdb->get_row( $wpdb->prepare( 
-			"SELECT donor_name FROM $table_name WHERE phone = %s ORDER BY id DESC LIMIT 1", 
-			$phone 
-		) );
-		
-		if ( $result ) {
-			return rest_ensure_response( array( 'found' => true, 'donor_name' => $result->donor_name ) );
-		} else {
-			return rest_ensure_response( array( 'found' => false ) );
+
+		// 1. Check CRM Contacts
+		$crm_table = $wpdb->prefix . 'erp_crm_contacts';
+		if ( $wpdb->get_var( "SHOW TABLES LIKE '$crm_table'" ) == $crm_table ) {
+			$crm_contact = $wpdb->get_row( $wpdb->prepare( 
+				"SELECT first_name, last_name FROM $crm_table WHERE phone = %s ORDER BY id DESC LIMIT 1", 
+				$phone 
+			) );
+
+			if ( $crm_contact ) {
+				$full_name = trim( $crm_contact->first_name . ' ' . $crm_contact->last_name );
+				return rest_ensure_response( array( 'found' => true, 'donor_name' => $full_name ) );
+			}
 		}
+		
+		// Fallback removed as per requirement: "Do not fallback to past donation"
+		return rest_ensure_response( array( 'found' => false ) );
 	}
 
 	/**

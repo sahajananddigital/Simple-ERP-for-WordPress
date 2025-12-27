@@ -46,7 +46,7 @@ class WP_ERP_Food_Pass {
 		add_menu_page(
 			__( 'Food Pass', 'wp-erp' ),
 			__( 'Food Pass', 'wp-erp' ),
-			'manage_options',
+			'erp_manage_food_pass',
 			'wp-erp-food-pass',
 			array( $this, 'render_page' ),
 			'dashicons-food',

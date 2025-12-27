@@ -102,6 +102,9 @@ export const generateReceiptImage = ( data, type = 'food-pass' ) => {
 		};
 
 		drawField( 'ID', data.id );
+		if ( data.donor_id ) {
+			drawField( 'User ID', data.donor_id );
+		}
 		drawField( 'Date', data.date );
 		drawField( 'Name', data.donor_name );
 		drawField( 'Amount', `₹${ data.amount }` );

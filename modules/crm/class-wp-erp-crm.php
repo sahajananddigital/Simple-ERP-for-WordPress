@@ -46,7 +46,7 @@ class WP_ERP_CRM {
 		add_menu_page(
 			__( 'CRM', 'wp-erp' ),
 			__( 'CRM', 'wp-erp' ),
-			'manage_options',
+			'erp_manage_crm',
 			'wp-erp-crm',
 			array( $this, 'render_page' ),
 			'dashicons-groups',

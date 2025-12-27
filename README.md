@@ -18,6 +18,7 @@ A comprehensive ERP solution for WordPress with extensible addon support. Includ
 - **REST API**: Full REST API for all modules
 - **Addon System**: Easy to create and install custom extensions
 - **Testing**: Includes PHPUnit and Jest tests
+- **User Management**: Granular access control to assign specific modules to specific users (includes 'ERP Staff' role)
 
 ## Installation
 

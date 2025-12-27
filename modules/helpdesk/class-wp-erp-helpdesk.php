@@ -46,7 +46,7 @@ class WP_ERP_Helpdesk {
 		add_menu_page(
 			__( 'Helpdesk', 'wp-erp' ),
 			__( 'Helpdesk', 'wp-erp' ),
-			'manage_options',
+			'erp_manage_helpdesk',
 			'wp-erp-helpdesk',
 			array( $this, 'render_page' ),
 			'dashicons-tickets-alt',

@@ -59,6 +59,7 @@ const CreateDonation = ( { ledgers, onDonationCreated } ) => {
 			const receiptData = {
 				title: 'DONATION RECEIPT',
 				id: saved.id,
+				donor_id: saved.donor_id, // Passed from API
 				date: today,
 				donor_name: donorName,
 				phone,

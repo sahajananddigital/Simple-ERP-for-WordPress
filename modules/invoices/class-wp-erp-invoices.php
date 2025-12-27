@@ -43,14 +43,13 @@ class WP_ERP_Invoices {
 	 * Add admin menu
 	 */
 	public function add_admin_menu() {
-		add_menu_page(
+		add_submenu_page(
+			'wp-erp-accounting',
 			__( 'Invoices', 'wp-erp' ),
 			__( 'Invoices', 'wp-erp' ),
-			'manage_options',
+			'erp_manage_invoices',
 			'wp-erp-invoices',
-			array( $this, 'render_page' ),
-			'dashicons-media-document',
-			35
+			array( $this, 'render_page' )
 		);
 		
 
