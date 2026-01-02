@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build files
+build/
+dist/
+
+# WordPress
+wp-config.php
+.htaccess
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lint_output.txt
+
+# Testing
+coverage/
+.phpunit.result.cache
+
+# Environment
+.env
+.env.local
+
+# Temporary files
+*.tmp
+*.temp
+

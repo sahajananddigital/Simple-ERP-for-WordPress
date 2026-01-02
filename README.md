@@ -1,154 +1,290 @@
-# WP ERP - WordPress ERP Plugin
+# Gurukul ERP - WordPress Plugin + React Native Mobile App
 
-A comprehensive ERP solution for WordPress with extensible addon support. Includes CRM, Accounting, HR, and Helpdesk modules built with Gutenberg native UI.
+A comprehensive management system for Gurukul (spiritual educational institute) consisting of a WordPress backend and a React Native mobile application.
 
-## Features
+## 📁 Project Structure (Monorepo)
 
-- **Modular Architecture**: Extensible plugin structure for custom addons
-- **Gutenberg UI**: Native WordPress Gutenberg components for modern interface
-- **Core Modules**:
-  - **CRM**: Contact management, lead tracking, customer relationships
-  - **Accounting**: Chart of accounts, transactions, billing
-  - **Invoices:** Create and manage invoices for your clients.
-  - **HR**: Employee management, leave requests
-  - **Helpdesk**: Ticket management system
-- **Expenses:** Track and categorize your company expenses.
-- **Food Pass:** Manage daily meal passes for students/employees with lunch notes and reporting.
-- **Donations:** Donation receipting system with donor history, ledger management, and instant printing.ystem
-- **REST API**: Full REST API for all modules
-- **Addon System**: Easy to create and install custom extensions
-- **Testing**: Includes PHPUnit and Jest tests
-- **User Management**: Granular access control to assign specific modules to specific users (includes 'ERP Staff' role)
+```
+Simple-ERP-for-WordPress/
+├── plugin/              # WordPress Plugin (Backend & Admin)
+├── app/                 # React Native Mobile App (Expo)
+└── AI_CONTEXT.md        # Technical documentation for AI/developers
+```
 
-## Installation
+---
 
-1. Upload the plugin to `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. The plugin will automatically create necessary database tables
-
-## Development Setup
+## 🚀 Quick Start
 
 ### Prerequisites
+- **WordPress Backend**: WordPress 5.8+, PHP 7.4+, MySQL 5.7+
+- **Mobile App**: Node.js 18+, npm/yarn, Expo CLI
 
-- Node.js 16+ and npm
-- PHP 7.4+
-- WordPress 5.8+
-- Composer (for PHP dependencies)
-
-### Install Dependencies
+### WordPress Plugin
 
 ```bash
+cd plugin
+
+# Install dependencies
 npm install
+
+# Build admin React UI
+npm run build
+
+# Start WordPress Playground for development
+npm run playground
 ```
 
-### Build Assets
+**Plugin Installation:**
+1. Copy the `plugin` folder to `wp-content/plugins/wp-erp`
+2. Activate "Gurukul ERP" in WordPress Admin → Plugins
+3. Access modules under "Gurukul ERP" in the admin menu
+
+### Mobile App
 
 ```bash
-# Development build with watch mode
+cd app
+
+# Install dependencies
+npm install
+
+# Start Expo dev server
 npm start
 
-# Production build
-npm run build
+# Or run directly on platform
+npm run android
+npm run ios
 ```
 
-### Running Tests
+**Configuration:**
+Edit `app/services/api.ts` and update `BASE_URL` with your WordPress API endpoint:
+```typescript
+const BASE_URL = 'http://YOUR_IP:PORT/wp-json/wp-erp/v1';
+```
 
+---
+
+## 🎯 Features
+
+### WordPress Plugin (Admin Panel)
+
+**Content Modules:**
+- 📸 **Daily Darshan** - Upload daily deity photos
+- 💬 **Daily Quotes** - Inspirational quotes with images
+- 📰 **Daily Updates** - News and announcements
+- 🎥 **Daily Satsang** - Video sermon links
+- 📅 **Daily Programs** - Event flyers/posters
+- 🗓️ **Calendar Events** - Festival and event scheduling
+
+**Other Modules:**
+- 👥 CRM (Contact Management)
+- 🍽️ Food Pass Management
+- 💰 Donations Tracking
+- 📊 Reports & Analytics
+
+**Technical:**
+- Modern React admin UI using @wordpress/components
+- REST API with proper authentication
+- Custom database tables for performance
+- Media library integration
+
+### Mobile App
+
+**Screens:**
+- 🏠 **Home** - Dashboard grid with all content modules
+- 🏢 **Front Desk** - Quick access menu
+- 👤 **Profile** - User settings, language switcher
+
+**Features:**
+- Light/Dark mode support
+- Multi-language (Gujarati + English)
+- Offline-ready architecture
+- Smooth navigation with Expo Router
+- Image caching and fallbacks
+
+---
+
+## 🛠️ Development
+
+### Plugin Development
+
+**Directory Structure:**
+```
+plugin/
+├── includes/           # Core PHP classes
+│   ├── api/           # REST API controllers
+│   └── class-wp-erp-database.php
+├── modules/           # Feature modules
+│   ├── content/       # Content management
+│   ├── crm/          # Contact management
+│   └── donations/    # Donation tracking
+├── src/              # React admin UI source
+│   ├── components/   # Shared components
+│   └── modules/      # Module-specific UIs
+└── build/            # Compiled JavaScript (gitignored)
+```
+
+**Key Commands:**
 ```bash
-# JavaScript tests
-npm test
-
-# PHP tests (requires WordPress test suite)
-vendor/bin/phpunit
+npm run build              # Build production bundle
+npm run start              # Watch mode for development
+npm run playground         # Start WordPress Playground
+npm run format-php         # Format PHP with PHPCS
 ```
 
-## Creating Addons
+### Mobile App Development
 
-Addons can be installed in `/wp-content/wp-erp-addons/` directory. Each addon should follow this structure:
-
+**Directory Structure:**
 ```
-wp-erp-addons/
-  your-addon/
-    your-addon.php
-    package.json (optional)
-    src/ (optional)
+app/
+├── app/               # Screens (Expo Router)
+│   ├── (tabs)/       # Tab navigation screens
+│   └── dashboard/    # Content module screens
+├── components/        # Reusable UI components
+├── services/         # API client, i18n
+├── constants/        # Theme colors, config
+└── assets/           # Images, fonts
 ```
 
-### Example Addon
+**Key Commands:**
+```bash
+npm start              # Start Metro bundler
+npm run android        # Run on Android emulator
+npm run ios            # Run on iOS simulator
+npm run web            # Run in browser
+```
 
+---
+
+## 🔧 Configuration
+
+### Environment Variables
+
+**WordPress Plugin:**
+No environment variables required. Configuration is stored in WordPress options.
+
+**Mobile App:**
+Edit `app/services/api.ts`:
+```typescript
+// For physical device testing
+const BASE_URL = 'http://192.168.1.X:9400/wp-json/wp-erp/v1';
+
+// For Android emulator
+const BASE_URL = 'http://10.0.2.2:9400/wp-json/wp-erp/v1';
+```
+
+### Image URL Configuration
+
+Update LAN IP in all API controllers (e.g., `plugin/includes/api/class-wp-erp-api-content.php`):
 ```php
-<?php
-/**
- * Plugin Name: WP ERP Addon - Your Addon
- * Description: Custom addon for WP ERP
- * Version: 1.0.0
- */
-
-if ( ! defined( 'ABSPATH' ) ) {
-    exit;
-}
-
-class WP_ERP_Addon_Your_Addon {
-    
-    public function __construct() {
-        add_action( 'wp_erp_init', array( $this, 'init' ) );
-    }
-    
-    public function init() {
-        // Your addon initialization code
-    }
-}
-
-new WP_ERP_Addon_Your_Addon();
+$url = str_replace('http://localhost', 'http://YOUR_IP', $url);
 ```
 
-## API Endpoints
+---
 
-### CRM
-- `GET /wp-erp/v1/crm/contacts` - Get all contacts
-- `POST /wp-erp/v1/crm/contacts` - Create contact
-- `GET /wp-erp/v1/crm/contacts/{id}` - Get contact
-- `PUT /wp-erp/v1/crm/contacts/{id}` - Update contact
-- `DELETE /wp-erp/v1/crm/contacts/{id}` - Delete contact
+## 📚 API Documentation
 
-### Accounting
-- `GET /wp-erp/v1/accounting/accounts` - Get chart of accounts
-- `GET /wp-erp/v1/accounting/transactions` - Get transactions
-- `POST /wp-erp/v1/accounting/transactions` - Create transaction
+### Base URL
+```
+{WORDPRESS_URL}/wp-json/wp-erp/v1
+```
 
-### HR
-- `GET /wp-erp/v1/hr/employees` - Get employees
+### Endpoints
 
-### Helpdesk
-- `GET /wp-erp/v1/helpdesk/tickets` - Get tickets
-- `POST /wp-erp/v1/helpdesk/tickets` - Create ticket
+**Content Modules:**
+- `GET /content/dashboard` - Dashboard grid items
+- `GET /content/daily-darshan` - Daily darshan list
+- `POST /content/daily-darshan` - Create darshan entry
+- `GET /content/daily-quotes` - Daily quotes list
+- `GET /content/daily-updates` - Updates list
+- `GET /content/daily-satsang` - Satsang videos
+- `GET /content/daily-programs` - Program flyers
+- `GET /content/calendar-events` - Calendar events
 
-## Database Schema
+**Authentication:**
+Admin endpoints require WordPress authentication (cookie or Application Password).
 
-The plugin creates the following tables:
-- `wp_erp_crm_contacts` - CRM contacts
-- `wp_erp_crm_activities` - CRM activities
-- `wp_erp_accounting_chart_of_accounts` - Chart of accounts
-- `wp_erp_accounting_transactions` - Accounting transactions
-- `wp_erp_accounting_transaction_entries` - Transaction entries
-- `wp_erp_hr_employees` - HR employees
-- `wp_erp_hr_leave_requests` - Leave requests
-- `wp_erp_helpdesk_tickets` - Helpdesk tickets
-- `wp_erp_helpdesk_ticket_replies` - Ticket replies
-- `wp_erp_addons` - Installed addons
+---
 
-## Contributing
+## 🧪 Testing
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+### WordPress Plugin
+```bash
+# Check PHP syntax
+php -l includes/api/class-wp-erp-api-*.php
 
-## License
+# Test API endpoints
+curl http://localhost:9400/wp-json/wp-erp/v1/content/dashboard
+```
 
-GPL v2 or later
+### Mobile App
+```bash
+# Clear cache and rebuild
+npm start -- -c
 
-## Credits
+# Run on specific device
+npm run android -- -d "device_name"
+```
 
-Inspired by ERPNext - an open-source ERP system.
+---
 
+## 📖 Documentation
+
+- **[AI_CONTEXT.md](./AI_CONTEXT.md)** - Complete technical reference
+- **[Walkthrough](./walkthrough.md)** - Implementation summary (in artifacts)
+- **[Implementation Plan](./implementation_plan.md)** - Pagination roadmap (in artifacts)
+
+---
+
+## 🐛 Troubleshooting
+
+See [AI_CONTEXT.md - Section 5: Mobile App Troubleshooting](./AI_CONTEXT.md#5-mobile-app---critical-troubleshooting)
+
+**Common Issues:**
+- **Images not loading**: Check LAN IP configuration
+- **Navigation errors**: Clear Metro cache (`npm start -- -c`)
+- **Admin panel errors**: Rebuild JS (`npm run build` in plugin/)
+
+---
+
+## 📦 Deployment
+
+### WordPress Plugin
+1. Upload `plugin` folder to server
+2. Run `npm run build` to compile React UI
+3. Activate plugin in WordPress admin
+4. Update image URL logic for production domain
+
+### Mobile App
+1. Update API URL to production endpoint
+2. Remove `usesCleartextTraffic: true` from `app.json`
+3. Build release APK/IPA:
+   ```bash
+   eas build --platform android --profile production
+   ```
+
+---
+
+## 🤝 Contributing
+
+1. Keep modules independent and reusable
+2. Use @wordpress/components for admin UI
+3. Follow WordPress coding standards
+4. Test on both Android and iOS
+
+---
+
+## 📄 License
+
+Proprietary - All rights reserved
+
+---
+
+## 👥 Credits
+
+Developed for Gurukul spiritual education management.
+
+**Tech Stack:**
+- WordPress 6.x + PHP 8
+- React 18 + @wordpress/components
+- React Native + Expo 51
+- Expo Router for navigation
