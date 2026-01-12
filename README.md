@@ -76,10 +76,16 @@ const BASE_URL = 'http://YOUR_IP:PORT/wp-json/wp-erp/v1';
 - 🗓️ **Calendar Events** - Festival and event scheduling
 
 **Other Modules:**
+- 🧾 Accounting
 - 👥 CRM (Contact Management)
-- 🍽️ Food Pass Management
 - 💰 Donations Tracking
+- 💸 Expenses
+- 🍽️ Food Pass Management
+- 🎫 Helpdesk
+- 🧩 HR (Human Resources)
+- 🧾 Invoices
 - 📊 Reports & Analytics
+- 🎟️ Vouchers
 
 **Technical:**
 - Modern React admin UI using @wordpress/components
@@ -129,6 +135,7 @@ npm run build              # Build production bundle
 npm run start              # Watch mode for development
 npm run playground         # Start WordPress Playground
 npm run format-php         # Format PHP with PHPCS
+npm run plugin-zip         # Generate plugin ZIP file
 ```
 
 ### Mobile App Development
